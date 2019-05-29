@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block body %}
+<br>
+<div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <h6 class="card-subtitle mb-2 text-muted"></h6>
+          <p class="card-text">
+                <div class="form-group">
+                    <form class="" action="/result" method="post">
+                        <label for="userData">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Your Name">
+                      </div>
+                      <div class="form-group">
+                        <label for="userData">Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="userData">Phone Number</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Enter Your Phone Number">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+          </p>        
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body"><h3>Skills You Have</h3> </div>
+              <p class="card-text"> 
+                  <table class="table">
+                    <thead>
+                </thead>
+                <tbody>
+                    {% for skill in skills %}
+                    <tr> 
+                           <td> <span class="badge badge-pill badge-success"><h6>{{ skill }}</h6></span></td>   
+                        <!-- <td>{{ skill }}</td>     -->
+                   
+                    {% endfor %}
+                </tr>
+                </tbody>
+                </table>
+                <button type="button" class="btn btn-dark btn-md">
+                        Your Score is <span class="badge badge-primary btn-md"><h3>{{score}}/10</h3></span>
+                         <span class="sr-only">unread messages</span>
+                       </button>
+                </div>
+            </p>                  
+            </div>
+          <!-- </div> -->
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><h3>Skills You Need</h3></h5>
+              <p class="card-text">
+                    <table class="table">
+                            <thead>
+                            {% for skills in byte_skill %}  
+                            <tr>
+                                    <!-- <td> <span class="badge badge-pill badge-warning"><h5>{{ skills }}</h4></span></td>     -->
+                       <h4>
+                                {% if skills in s %}
+                                  <span class="badge badge-pill badge-secondary">{{ skills }}</span></label>
+                                {% else %}
+                                  <span class="badge badge-pill badge-warning">{{ skills }}</span></label>
+                                {% endif %}</h4>
+                            </tr>
+                            {% endfor %}
+                                </div>
+                        
+                    </tbody>
+                    </table>
+                    </div>
+
+              </p>
+              <button type="button" class="btn btn-dark btn-md">
+                    Your Future Score Will be <span class="badge badge-primary btn-md"><h3>8.41/10</h3></span>
+                     <span class="sr-only">unread messages</span>
+            </div>
+          </div>
+        </div>
+{% endblock %}
+
